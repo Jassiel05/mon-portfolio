@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jassiel Fidèle | Spécialiste IA & Automatisation</title>
+    <meta name="description" content="Expert en automatisation intelligente, workflows n8n, emailing IA et solutions d'appels automatisés.">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Typed.js pour l'effet machine à écrire -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233b82f6'/><circle cx='50' cy='35' r='18' fill='white'/><ellipse cx='50' cy='85' rx='28' ry='20' fill='white'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#06b6d4',
+                        dark: '#0f172a',
+                        darker: '#020617',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Animations personnalisées */
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(14, 165, 233, 0.6); }
+        }
+        
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Classes d'animation */
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradient 8s ease infinite;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        /* Effet de brillance sur hover */
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shine-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .shine-effect:hover::before {
+            animation: shine 0.75s ease-out;
+        }
+        
+        /* Classes pour animations au scroll */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animated {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+        
+        /* Particules de fond */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(14, 165, 233, 0.15);
+            pointer-events: none;
+        }
+        
+        /* Grille de fond */
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        
+        /* Curseur clignotant pour Typed.js */
+        .typed-cursor {
+            color: #0ea5e9;
+            font-weight: 100;
+        }
+        
+        /* Scrollbar personnalisée */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #0ea5e9;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+        
+        /* Effet glow sur les images projet */
+        .project-glow {
+            transition: all 0.4s ease;
+        }
+        
+        .project-glow:hover {
+            box-shadow: 0 0 30px rgba(14, 165, 233, 0.4);
+            transform: scale(1.03);
+        }
+        
+        /* Navigation fixe avec blur */
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-darker text-white font-sans antialiased overflow-x-hidden">
+    
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-blur bg-darker/80 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    JF.
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#services" class="text-gray-400 hover:text-white transition-colors text-sm">Services</a>
+                    <a href="#processus" class="text-gray-400 hover:text-white transition-colors text-sm">Processus</a>
+                    <a href="#projets" class="text-gray-400 hover:text-white transition-colors text-sm">Projets</a>
+                    <a href="#stack" class="text-gray-400 hover:text-white transition-colors text-sm">Stack</a>
+                </div>
+                <a href="#contact" class="px-5 py-2.5 bg-primary hover:bg-primary/90 rounded-lg text-sm font-medium transition-all hover:shadow-lg hover:shadow-primary/25">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center grid-bg overflow-hidden">
+        <!-- Fond animé gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-darker via-dark to-darker"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5 animate-gradient"></div>
+        
+        <!-- Particules décoratives -->
+        <div id="particles" class="absolute inset-0 overflow-hidden"></div>
+        
+        <!-- Cercles décoratifs -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8 fade-in-up" style="animation-delay: 0.2s;">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-sm text-gray-400">Disponible pour nouveaux projets</span>
+            </div>
+            
+            <!-- Titre principal -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                <span class="text-white">Jassiel Fidèle</span>
+                <br>
+                <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    RAKOTOARINELINA
+                </span>
+            </h1>
+            
+            <!-- Texte animé Typed.js -->
+            <div class="h-16 md:h-20 flex items-center justify-center mb-8">
+                <p class="text-xl md:text-2xl lg:text-3xl text-gray-400">
+                    Je crée <span id="typed-text" class="text-primary font-semibold"></span>
+                </p>
+            </div>
+            
+            <!-- Description -->
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.4s;">
+                Spécialiste en Intelligence Artificielle et Automatisation. 
+                Je transforme vos processus métier en systèmes intelligents et performants.
+            </p>
+            
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-up" style="animation-delay: 0.6s;">
+                <a href="#contact" class="group px-8 py-4 bg-primary hover:bg-primary/90 rounded-xl font-semibold transition-all hover:shadow-xl hover:shadow-primary/30 flex items-center gap-2">
+                    Me contacter
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+                <a href="#projets" class="px-8 py-4 border border-white/20 hover:border-white/40 rounded-xl font-semibold transition-all hover:bg-white/5">
+                    Voir mes projets
+                </a>
+            </div>
+            
+            <!-- Stats rapides -->
+            <div class="grid grid-cols-3 gap-8 mt-16 pt-16 border-t border-white/10 max-w-2xl mx-auto fade-in-up" style="animation-delay: 0.8s;">
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold text-white">50+</div>
+                    <div class="text-sm text-gray-500 mt-1">Projets livrés</div>
+                </div>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold text-white">98%</div>
+                    <div class="text-sm text-gray-500 mt-1">Satisfaction</div>
+                </div>
+                <div>
+                    <div class="text-3xl md:text-4xl font-bold text-white">24h</div>
+                    <div class="text-sm text-gray-500 mt-1">Réponse max</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500">
+            <span class="text-xs uppercase tracking-widest">Scroll</span>
+            <div class="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
+                <div class="w-1.5 h-3 bg-primary rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES SECTION ===== -->
+    <section id="services" class="py-24 md:py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <span class="text-primary text-sm font-semibold tracking-wider uppercase fade-in-up">Services</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6 fade-in-up">
+                    Solutions d'<span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Automatisation</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto fade-in-up">
+                    Des solutions sur mesure pour automatiser vos tâches répétitives et booster votre productivité.
+                </p>
+            </div>
+            
+            <!-- Services Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1: Emailing Intelligent -->
+                <div class="group p-8 bg-gradient-to-b from-white/5 to-transparent border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-500 shine-effect fade-in-up hover:scale-105">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Emailing Intelligent</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Campagnes email personnalisées par IA, séquences automatisées et suivi intelligent des prospects.
+                    </p>
+                </div>
+                
+                <!-- Service 2: Appels IA -->
+                <div class="group p-8 bg-gradient-to-b from-white/5 to-transparent border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-500 shine-effect fade-in-up hover:scale-105" style="animation-delay: 0.1s;">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Appels IA</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Agents vocaux IA pour qualification de leads, prise de RDV et support client 24/7.
+                    </p>
+                </div>
+                
+                <!-- Service 3: Formulaires Intelligents -->
+                <div class="group p-8 bg-gradient-to-b from-white/5 to-transparent border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-500 shine-effect fade-in-up hover:scale-105" style="animation-delay: 0.2s;">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Formulaires Intelligents</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Formulaires adaptatifs avec logique conditionnelle et intégration CRM automatique.
+                    </p>
+                </div>
+                
+                <!-- Service 4: Workflows n8n -->
+                <div class="group p-8 bg-gradient-to-b from-white/5 to-transparent border border-white/10 rounded-2xl hover:border-primary/50 transition-all duration-500 shine-effect fade-in-up hover:scale-105" style="animation-delay: 0.3s;">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Workflows n8n</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Automatisation complète de vos processus avec n8n, Make et Zapier.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROCESSUS SECTION ===== -->
+    <section id="processus" class="py-24 md:py-32 bg-dark/50 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <span class="text-primary text-sm font-semibold tracking-wider uppercase fade-in-up">Processus</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6 fade-in-up">
+                    Comment je <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">travaille</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto fade-in-up">
+                    Une méthodologie éprouvée pour des résultats concrets et mesurables.
+                </p>
+            </div>
+            
+            <!-- Steps -->
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <!-- Ligne de connexion -->
+                <div class="hidden md:block absolute top-24 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-primary/50 via-secondary/50 to-primary/50"></div>
+                
+                <!-- Étape 1: Analyse -->
+                <div class="relative fade-in-left">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse-glow">
+                            <span class="text-2xl font-bold">01</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Analyse</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Audit complet de vos processus actuels. Identification des points de friction et opportunités d'automatisation.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Étape 2: Automatisation -->
+                <div class="relative fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse-glow" style="animation-delay: -1s;">
+                            <span class="text-2xl font-bold">02</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Automatisation</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Conception et déploiement de solutions sur mesure. Intégration avec vos outils existants.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Étape 3: Optimisation -->
+                <div class="relative fade-in-right" style="animation-delay: 0.4s;">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse-glow" style="animation-delay: -2s;">
+                            <span class="text-2xl font-bold">03</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Optimisation</h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Suivi des performances, ajustements continus et formation de vos équipes pour une autonomie totale.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJETS SECTION ===== -->
+    <section id="projets" class="py-24 md:py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <span class="text-primary text-sm font-semibold tracking-wider uppercase fade-in-up">Portfolio</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6 fade-in-up">
+                    Projets <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">réalisés</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto fade-in-up">
+                    Découvrez quelques-unes de mes réalisations récentes.
+                </p>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Projet 1: Olyra Digital -->
+                <a href="https://olyra-digital.com" target="_blank" rel="noopener noreferrer" class="group block scale-in">
+                    <div class="relative overflow-hidden rounded-2xl border border-white/10 project-glow cursor-pointer">
+                        <!-- Image du projet -->
+                        <div class="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwZWE1ZTkiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoMnY0em0wLTZ2LTJoLTJ2Mmgyem0tNC00aC0ydjJoMnYtMnptMCA2aC0ydjRoMnYtNHptLTQtMmgtMnYyaDJ2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-50"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center p-8">
+                                    <div class="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                        <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-2xl font-bold text-white">OLYRA DIGITAL</span>
+                                </div>
+                            </div>
+                            <!-- Overlay au hover -->
+                            <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-6 py-3 bg-white text-dark font-semibold rounded-lg transform scale-90 group-hover:scale-100 transition-transform">
+                                    Visiter le site →
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Contenu -->
+                        <div class="p-6 bg-dark/50">
+                            <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">Olyra Digital</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Agence digitale spécialisée dans la création de sites web modernes et le marketing digital. Automatisation complète du tunnel de vente.
+                            </p>
+                            <div class="flex items-center gap-2 mt-4">
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Web Design</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">Automatisation</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Projet 2: TSB Energie -->
+                <a href="https://tsb-energie.fr" target="_blank" rel="noopener noreferrer" class="group block scale-in" style="animation-delay: 0.2s;">
+                    <div class="relative overflow-hidden rounded-2xl border border-white/10 project-glow cursor-pointer">
+                        <!-- Image du projet -->
+                        <div class="aspect-video bg-gradient-to-br from-green-500/20 to-emerald-500/20 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMxMGI5ODEiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoMnY0em0wLTZ2LTJoLTJ2Mmgyem0tNC00aC0ydjJoMnYtMnptMCA2aC0ydjRoMnYtNHptLTQtMmgtMnYyaDJ2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-50"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center p-8">
+                                    <div class="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                        <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-2xl font-bold text-white">TSB ENERGIE</span>
+                                </div>
+                            </div>
+                            <!-- Overlay au hover -->
+                            <div class="absolute inset-0 bg-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-6 py-3 bg-white text-dark font-semibold rounded-lg transform scale-90 group-hover:scale-100 transition-transform">
+                                    Visiter le site →
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Contenu -->
+                        <div class="p-6 bg-dark/50">
+                            <h3 class="text-xl font-semibold mb-2 group-hover:text-green-500 transition-colors">TSB Energie</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Solutions énergétiques durables. Mise en place de formulaires intelligents et workflows de qualification de leads automatisés.
+                            </p>
+                            <div class="flex items-center gap-2 mt-4">
+                                <span class="px-3 py-1 bg-green-500/10 text-green-500 text-xs rounded-full">Energie</span>
+                                <span class="px-3 py-1 bg-green-500/10 text-green-500 text-xs rounded-full">Lead Gen</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- Projet 3: OVA Renov -->
+                <a href="https://ova-renov.fr" target="_blank" rel="noopener noreferrer" class="group block scale-in" style="animation-delay: 0.4s;"> 
+                    <div class="relative overflow-hidden rounded-2xl border border-white/10 project-glow cursor-pointer"> 
+                        <!-- Image du projet --> 
+                        <div class="aspect-video bg-gradient-to-br from-orange-500/20 to-amber-500/20 relative overflow-hidden"> 
+                            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmOTczMTYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoMnY0em0wLTZ2LTJoLTJ2Mmgyem0tNC00aC0ydjJoMnYtMnptMCA2aC0ydjRoMnYtNHptLTQtMmgtMnYyaDJ2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-50"></div> 
+                            <div class="absolute inset-0 flex items-center justify-center"> 
+                                <div class="text-center p-8"> 
+                                    <div class="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform"> 
+                                        <svg class="w-10 h-10 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"> 
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path> 
+                                        </svg> 
+                                    </div> 
+                                    <span class="text-2xl font-bold text-white">OVA RENOV</span> 
+                                </div> 
+                            </div> 
+                            <!-- Overlay au hover --> 
+                            <div class="absolute inset-0 bg-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"> 
+                                <span class="px-6 py-3 bg-white text-dark font-semibold rounded-lg transform scale-90 group-hover:scale-100 transition-transform"> 
+                                    Visiter le site → 
+                                </span> 
+                            </div> 
+                        </div> 
+                        <!-- Contenu --> 
+                        <div class="p-6 bg-dark/50"> 
+                            <h3 class="text-xl font-semibold mb-2 group-hover:text-orange-500 transition-colors">OVA Renov</h3> 
+                            <p class="text-gray-400 text-sm leading-relaxed"> 
+                                Spécialiste de la rénovation intérieure et extérieure. Création d'un site vitrine moderne avec demande de devis en ligne et mise en valeur des réalisations. 
+                            </p> 
+                            <div class="flex items-center gap-2 mt-4"> 
+                                <span class="px-3 py-1 bg-orange-500/10 text-orange-500 text-xs rounded-full">Rénovation</span> 
+                                <span class="px-3 py-1 bg-orange-500/10 text-orange-500 text-xs rounded-full">Vitrine</span> 
+                            </div> 
+                        </div> 
+                    </div> 
+                </a> 
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STACK SECTION ===== -->
+    <section id="stack" class="py-24 md:py-32 bg-dark/50 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <span class="text-primary text-sm font-semibold tracking-wider uppercase fade-in-up">Technologies</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6 fade-in-up">
+                    Stack <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Technologique</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto fade-in-up">
+                    Les outils que j'utilise pour créer des solutions d'automatisation puissantes.
+                </p>
+            </div>
+            
+            <!-- Tech Badges -->
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up">
+                    <span class="font-medium">n8n</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.05s;">
+                    <span class="font-medium">Twilio</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.1s;">
+                    <span class="font-medium">ElevenLabs</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.15s;">
+                    <span class="font-medium">OpenAI API</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.2s;">
+                    <span class="font-medium">Claude API</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.25s;">
+                    <span class="font-medium">Twilio</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.3s;">
+                    <span class="font-medium">Email API</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.35s;">
+                    <span class="font-medium">Sheet</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.4s;">
+                    <span class="font-medium">Airtable</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.45s;">
+                    <span class="font-medium">Notion API</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.5s;">
+                    <span class="font-medium">Slack API</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.55s;">
+                    <span class="font-medium">Webhook</span>
+                </div>
+                <div class="px-6 py-3 bg-white/5 border border-white/10 rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-all fade-in-up" style="animation-delay: 0.65s;">
+                    <span class="font-medium">...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section id="contact" class="py-24 md:py-32 relative overflow-hidden">
+        <!-- Background effects -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 fade-in-up">
+                Prêt à <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">automatiser</span> votre business ?
+            </h2>
+            <p class="text-xl text-gray-400 mb-10 fade-in-up">
+                Discutons de votre projet et trouvons ensemble la solution idéale pour booster votre productivité.
+            </p>
+            
+            <a href="mailto:rakotoarinelinajassiel@gmail.com" class="inline-flex items-center gap-3 px-10 py-5 bg-primary hover:bg-primary/90 rounded-2xl text-lg font-semibold transition-all hover:shadow-2xl hover:shadow-primary/30 hover:scale-105 fade-in-up">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                Envoyez-moi un email
+            </a>
+            
+            <p class="text-gray-500 mt-6 fade-in-up">
+                rakotoarinelinajassiel@gmail.com
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">JF.</span>
+                    <span class="text-gray-500">|</span>
+                    <span class="text-gray-400 text-sm">© 2025 Jassiel Fidèle RAKOTOARINELINA</span>
+                </div>
+                
+                <div class="flex items-center gap-6">
+                    <a href="https://olyra-digital.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition-colors text-sm">
+                        Olyra Digital
+                    </a>
+                    <a href="https://tsb-energie.fr" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition-colors text-sm">
+                        TSB Energie
+                    </a>
+                    <a href="mailto:rakotoarinelinajassiel@gmail.com" class="text-gray-400 hover:text-primary transition-colors text-sm">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // Initialisation de Typed.js pour l'effet machine à écrire
+        document.addEventListener('DOMContentLoaded', function() {
+            new Typed('#typed-text', {
+                strings: [
+                    'des automatisations intelligentes',
+                    'des workflows n8n sur mesure',
+                    'des campagnes email IA',
+                    'des agents vocaux IA',
+                    'des solutions qui convertissent'
+                ],
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 2000,
+                loop: true,
+                cursorChar: '|'
+            });
+        });
+
+        // Animation des particules
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 4 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                
+                particle.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${posX}%;
+                    top: ${posY}%;
+                    animation: float ${duration}s ease-in-out ${delay}s infinite;
+                    opacity: ${Math.random() * 0.5 + 0.1};
+                `;
+                
+                container.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+
+        // Intersection Observer pour les animations au scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec des classes d'animation
+        document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll pour les liens d'ancrage
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Effet de parallaxe subtil sur le hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('#hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
