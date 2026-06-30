@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://jassiel-portfolio.site/</loc>
-    <lastmod>2025-06-17</lastmod>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://jassiel-portfolio.site/assets/jassiel-fidele-rakotoarinelina.png</image:loc>
+      <image:title>Jassiel Fidèle RAKOTOARINELINA — Expert IA &amp; Automatisation</image:title>
+    </image:image>
   </url>
 </urlset>
