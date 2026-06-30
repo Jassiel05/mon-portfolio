@@ -1,0 +1,17 @@
+{
+  "name": "Jassiel Fidèle RAKOTOARINELINA — Expert IA & Automatisation",
+  "short_name": "Jassiel Fidèle",
+  "description": "Portfolio de Jassiel Fidèle RAKOTOARINELINA, expert en IA et automatisation à Madagascar.",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050811",
+  "theme_color": "#050811",
+  "icons": [
+    {
+      "src": "assets/jassiel-fidele-rakotoarinelina.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
