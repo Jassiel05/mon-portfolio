@@ -205,37 +205,6 @@
     });
   }
 
-  /* ===== TILT 3D SUR LA PHOTO "À PROPOS" ===== */
-  if (!reduce && window.matchMedia('(pointer: fine)').matches) {
-    var frame = document.querySelector('.about-img-frame');
-    if (frame) {
-      frame.style.transition = 'transform 0.25s ease-out';
-      frame.style.transformStyle = 'preserve-3d';
-      var media = frame.closest('.about-media');
-      media.style.perspective = '900px';
-      media.addEventListener('mousemove', function (e) {
-        var r = frame.getBoundingClientRect();
-        var rx = -((e.clientY - r.top) / r.height - 0.5) * 12;
-        var ry = ((e.clientX - r.left) / r.width - 0.5) * 12;
-        frame.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
-      });
-      media.addEventListener('mouseleave', function () { frame.style.transform = ''; });
-    }
-  }
-
-  /* ===== CUBE 3D : léger suivi de la souris ===== */
-  if (!reduce && window.matchMedia('(pointer: fine)').matches) {
-    var hero = document.getElementById('hero');
-    var scene = document.getElementById('scene3d');
-    if (hero && scene) {
-      hero.addEventListener('mousemove', function (e) {
-        var tx = (e.clientX / window.innerWidth - 0.5) * 24;
-        var ty = (e.clientY / window.innerHeight - 0.5) * 18;
-        scene.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
-      });
-      hero.addEventListener('mouseleave', function () { scene.style.transform = ''; });
-    }
-  }
 
   /* ===== NAV : réduction au scroll ===== */
   var nav = document.getElementById('nav');
