@@ -1,5 +1,5 @@
 <style>
-#jassiel-widget { position: fixed; bottom: 32px; right: 32px; z-index: 99999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+#jassiel-widget { position: fixed !important; bottom: 32px !important; right: 32px !important; z-index: 99999 !important; left: auto !important; top: auto !important; transform: none !important; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
 #jassiel-btn { width: 60px; height: 60px; border-radius: 50%; border: none; cursor: pointer; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-size: 22px; font-weight: 700; box-shadow: 0 4px 24px rgba(99,102,241,0.5); display: flex; align-items: center; justify-content: center; transition: transform 0.2s, box-shadow 0.2s; outline: none; }
 #jassiel-btn:hover { transform: scale(1.1); box-shadow: 0 6px 32px rgba(99,102,241,0.65); }
 #jassiel-window { display: none; position: absolute; bottom: 72px; right: 0; width: 340px; background: #fff; border-radius: 18px; box-shadow: 0 8px 48px rgba(0,0,0,0.18); flex-direction: column; overflow: hidden; animation: chatSlideUp 0.25s ease; max-height: calc(100vh - 120px); }
