@@ -47,6 +47,7 @@
   <!-- ============ FEUILLE DE STYLE ============ -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="competences.css">
+  <link rel="stylesheet" href="chatbot.css">
   <!-- ============ DONNÉES STRUCTURÉES SCHEMA.ORG ============ -->
   <script type="application/ld+json">
   {
@@ -501,8 +502,39 @@
     <a href="mailto:rakotoarinelinajassiel@gmail.com">Contact</a>
   </div>
 </footer>
+  
+<!-- contenu de chatbot.html ici -->
+  <div id="jassiel-widget">
+  <button id="jassiel-btn" onclick="jChat.toggle()" aria-label="Chat avec l'assistant de Jassiel">J</button>
+  <div id="jassiel-window">
+    <div id="jassiel-header">
+      <div id="jassiel-header-left">
+        <div id="jassiel-avatar">J</div>
+        <div>
+          <div id="jassiel-title">Assistant IA · Jassiel</div>
+          <div id="jassiel-subtitle"><span class="jassiel-dot"></span> En ligne · Réponse instantanée</div>
+        </div>
+      </div>
+      <button id="jassiel-close" onclick="jChat.toggle()">✕</button>
+    </div>
+    <div id="jassiel-messages">
+      <div class="jmsg bot"><div class="jbubble">Bonjour ! Je suis l'assistant IA de Jassiel 👋<br>Comment puis-je vous aider ?</div></div>
+      <div id="jassiel-typing" class="jmsg bot" style="display:none;"><div style="display:flex;gap:5px;align-items:center;padding:10px 14px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;border-bottom-left-radius:4px;"><span style="width:7px;height:7px;background:#9ca3af;border-radius:50%;animation:jDot 1.2s infinite;"></span><span style="width:7px;height:7px;background:#9ca3af;border-radius:50%;animation:jDot 1.2s .2s infinite;"></span><span style="width:7px;height:7px;background:#9ca3af;border-radius:50%;animation:jDot 1.2s .4s infinite;"></span></div></div>
+    </div>
+    <div id="jassiel-suggestions">
+      <button class="jsugg" onclick="jChat.suggest('Quels sont vos services ?')">🚀 Services</button>
+      <button class="jsugg" onclick="jChat.suggest('Quels outils maîtrisez-vous ?')">🛠️ Stack</button>
+      <button class="jsugg" onclick="jChat.suggest('Comment vous contacter ?')">📬 Contact</button>
+    </div>
+    <div id="jassiel-input-row">
+      <input id="jassiel-input" type="text" placeholder="Posez votre question..." autocomplete="off" onkeydown="if(event.key==='Enter') jChat.send()"/>
+      <button id="jassiel-send" onclick="jChat.send()"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button>
+    </div>
+  </div>
+</div>
 
-<script src="script.js" defer></script>
-<script src="competences.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="competences.js" defer></script>
+  <script src="chatbot.js"></script>
 </body>
 </html>
