@@ -1,8 +1,8 @@
 <style>
-#jassiel-widget { position: fixed; bottom: 28px; right: 28px; z-index: 99999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+#jassiel-widget { position: fixed; bottom: 32px; right: 32px; z-index: 99999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
 #jassiel-btn { width: 60px; height: 60px; border-radius: 50%; border: none; cursor: pointer; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-size: 22px; font-weight: 700; box-shadow: 0 4px 24px rgba(99,102,241,0.5); display: flex; align-items: center; justify-content: center; transition: transform 0.2s, box-shadow 0.2s; outline: none; }
 #jassiel-btn:hover { transform: scale(1.1); box-shadow: 0 6px 32px rgba(99,102,241,0.65); }
-#jassiel-window { display: none; position: absolute; bottom: 72px; right: 0; width: 340px; background: #fff; border-radius: 18px; box-shadow: 0 8px 48px rgba(0,0,0,0.18); flex-direction: column; overflow: hidden; animation: chatSlideUp 0.25s ease; }
+#jassiel-window { display: none; position: absolute; bottom: 72px; right: 0; width: 340px; background: #fff; border-radius: 18px; box-shadow: 0 8px 48px rgba(0,0,0,0.18); flex-direction: column; overflow: hidden; animation: chatSlideUp 0.25s ease; max-height: calc(100vh - 120px); }
 @keyframes chatSlideUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 #jassiel-header { background: linear-gradient(135deg, #6366f1, #8b5cf6); padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; color: white; }
 #jassiel-header-left { display: flex; align-items: center; gap: 10px; }
@@ -26,5 +26,22 @@
 #jassiel-input:focus { border-color: #8b5cf6; background: #fff; }
 #jassiel-send { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; border: none; border-radius: 10px; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: transform 0.15s; }
 #jassiel-send:hover { transform: scale(1.07); } #jassiel-send:disabled { opacity: 0.45; cursor: not-allowed; }
-@media (max-width: 420px) { #jassiel-widget { bottom: 16px; right: 16px; } #jassiel-window { width: calc(100vw - 32px); right: 0; } }
-</style>
+/* Smartphones */
+@media (max-width: 600px) {
+  #jassiel-widget { bottom: 20px; right: 16px; }
+  #jassiel-window { width: calc(100vw - 32px); right: 0; max-height: calc(100vh - 100px); }
+  #jassiel-btn { width: 54px; height: 54px; font-size: 20px; }
+}
+
+/* Très petits écrans (iPhone SE) */
+@media (max-width: 380px) {
+  #jassiel-widget { bottom: 16px; right: 12px; }
+  #jassiel-window { width: calc(100vw - 24px); max-height: calc(100vh - 90px); }
+  .jbubble { font-size: 13px; }
+}
+
+/* Clavier virtuel ouvert sur mobile */
+@media (max-height: 500px) {
+  #jassiel-messages { min-height: 80px; max-height: 120px; }
+  #jassiel-suggestions { display: none; }
+}
