@@ -18,7 +18,7 @@
   // Production URL du node Webhook1 dans n8n.
   // Format : https://TON-INSTANCE-N8N/webhook/Test-jassiel
   // (l'URL /webhook-test/ n'écoute que pendant un clic sur "Execute workflow")
-  const WEBHOOK_URL = "https://TON-INSTANCE-N8N/webhook/Test-jassiel";
+  const WEBHOOK_URL = "https://n8n.srv1139844.hstgr.cloud/webhook/Test-jassiel";
 
   const CONTACT_EMAIL = "rakotoarinelinajassiel@gmail.com"; // affiché si l'envoi échoue
   const COOLDOWN_MS   = 60000;  // 1 envoi par minute et par navigateur
