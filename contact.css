@@ -1,0 +1,137 @@
+/**
+ * Formulaire de contact — jassiel-portfolio.site
+ * Portée : uniquement les classes .cf-* (aucun risque de collision avec style.css)
+ * Accent : modifier --cf-accent ci-dessous pour changer toute la couleur du formulaire.
+ */
+
+.cf-wrap{
+  --cf-bg:rgba(255,255,255,.03);
+  --cf-field:rgba(255,255,255,.05);
+  --cf-line:rgba(255,255,255,.12);
+  --cf-txt:#e8edf7;
+  --cf-dim:#8b9ab8;
+  --cf-accent:#3ba9d8;
+  --cf-accent-txt:#04121c;
+  --cf-ok:#2fbf8f;
+  --cf-ko:#e2645f;
+
+  max-width:720px;
+  margin:38px auto 30px;
+  padding:28px;
+  border-radius:18px;
+  text-align:left;
+  background:var(--cf-bg);
+  border:1px solid var(--cf-line);
+  backdrop-filter:blur(8px);
+  font-family:inherit;
+  color:var(--cf-txt);
+}
+
+/* ---------- Grille ---------- */
+.cf-row{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
+.cf-field{display:flex; flex-direction:column; margin-bottom:14px}
+
+@media(max-width:640px){
+  .cf-wrap{padding:20px; margin:28px auto 24px}
+  .cf-row{grid-template-columns:1fr}
+}
+
+/* ---------- Labels ---------- */
+.cf label{font-size:13px; font-weight:500; margin-bottom:7px; color:var(--cf-txt); letter-spacing:.01em}
+.cf-req{color:var(--cf-accent)}
+.cf-opt{color:var(--cf-dim); font-weight:400; font-size:12px}
+
+/* ---------- Champs ---------- */
+.cf input,
+.cf select,
+.cf textarea{
+  width:100%;
+  background:var(--cf-field);
+  border:1px solid var(--cf-line);
+  border-radius:10px;
+  padding:12px 14px;
+  color:var(--cf-txt);
+  font:inherit;
+  font-size:14.5px;
+  transition:border-color .18s, box-shadow .18s;
+}
+
+.cf textarea{resize:vertical; min-height:120px; line-height:1.6}
+.cf input::placeholder,
+.cf textarea::placeholder{color:#5d6c8c}
+
+.cf select{
+  appearance:none;
+  -webkit-appearance:none;
+  cursor:pointer;
+  padding-right:40px;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238b9ab8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+}
+.cf select option{background:#0b1020; color:var(--cf-txt)}
+
+.cf input:focus,
+.cf select:focus,
+.cf textarea:focus{
+  outline:none;
+  border-color:var(--cf-accent);
+  box-shadow:0 0 0 3px rgba(59,169,216,.16);
+}
+
+.cf .invalid{border-color:var(--cf-ko)}
+
+/* ---------- Erreurs & compteur ---------- */
+.cf-err{font-size:12px; color:var(--cf-ko); min-height:15px; margin-top:5px}
+.cf-meta{display:flex; justify-content:space-between; align-items:center; gap:12px}
+.cf-count{font-size:12px; color:var(--cf-dim); white-space:nowrap; margin-top:5px}
+
+/* ---------- Honeypot anti-spam (invisible) ---------- */
+.cf-hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+
+/* ---------- Bouton ---------- */
+.cf-submit{
+  width:100%;
+  margin-top:6px;
+  padding:14px 20px;
+  border:none;
+  border-radius:10px;
+  background:var(--cf-accent);
+  color:var(--cf-accent-txt);
+  font:inherit;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:filter .18s, transform .1s;
+}
+.cf-submit:hover:not(:disabled){filter:brightness(1.1)}
+.cf-submit:active:not(:disabled){transform:scale(.99)}
+.cf-submit:disabled{opacity:.55; cursor:not-allowed}
+
+.cf-spinner{
+  display:none;
+  width:15px; height:15px;
+  border:2px solid rgba(4,18,28,.3);
+  border-top-color:var(--cf-accent-txt);
+  border-radius:50%;
+  animation:cf-spin .7s linear infinite;
+}
+.cf.sending .cf-spinner{display:block}
+@keyframes cf-spin{to{transform:rotate(360deg)}}
+
+/* ---------- Messages ---------- */
+.cf-note{font-size:12.5px; color:var(--cf-dim); text-align:center; margin:12px 0 0}
+.cf-status{margin-top:14px; padding:0; font-size:14px; line-height:1.55; border-radius:10px; text-align:center}
+.cf-status.show{padding:13px 16px}
+.cf-status.ok{background:rgba(47,191,143,.12); color:var(--cf-ok); border:1px solid rgba(47,191,143,.3)}
+.cf-status.ko{background:rgba(226,100,95,.12); color:var(--cf-ko); border:1px solid rgba(226,100,95,.3)}
+
+.cf-alt{display:block; font-size:12.5px; color:var(--cf-dim); margin-bottom:6px}
+
+@media(prefers-reduced-motion:reduce){
+  .cf-spinner{animation:none}
+}
