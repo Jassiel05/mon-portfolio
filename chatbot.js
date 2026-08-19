@@ -1,5 +1,5 @@
 const jChat = (() => {
-  const URL = 'https://agents-ia.app.n8n.cloud/webhook/ef811830-f86c-4055-84f7-576d20166357/chat';
+  const URL = 'https://n8n.srv1139844.hstgr.cloud/webhook/ef811830-f86c-4055-84f7-576d20166357/chat';
   let open = false, busy = false, sid = 'js_' + Math.random().toString(36).slice(2, 10) + '_' + Date.now();
   const $ = id => document.getElementById(id);
 
