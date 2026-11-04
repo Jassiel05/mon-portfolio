@@ -5,24 +5,23 @@
  */
 
 .cf-wrap{
-  --cf-bg:rgba(255,255,255,.03);
-  --cf-field:rgba(255,255,255,.05);
-  --cf-line:rgba(255,255,255,.12);
-  --cf-txt:#e8edf7;
-  --cf-dim:#8b9ab8;
-  --cf-accent:#3ba9d8;
-  --cf-accent-txt:#04121c;
-  --cf-ok:#2fbf8f;
-  --cf-ko:#e2645f;
+  --cf-bg:#ffffff;
+  --cf-field:#ffffff;
+  --cf-line:#cfcdcb;
+  --cf-txt:#2d2d2d;
+  --cf-dim:#595959;
+  --cf-accent:#2557a7;
+  --cf-accent-txt:#ffffff;
+  --cf-ok:#1a7f5a;
+  --cf-ko:#c0392b;
 
   max-width:720px;
-  margin:38px auto 30px;
+  margin:32px auto 24px;
   padding:28px;
-  border-radius:18px;
+  border-radius:8px;
   text-align:left;
   background:var(--cf-bg);
   border:1px solid var(--cf-line);
-  backdrop-filter:blur(8px);
   font-family:inherit;
   color:var(--cf-txt);
 }
@@ -69,7 +68,7 @@
   background-repeat:no-repeat;
   background-position:right 14px center;
 }
-.cf select option{background:#0b1020; color:var(--cf-txt)}
+.cf select option{background:#fff; color:var(--cf-txt)}
 
 .cf input:focus,
 .cf select:focus,
