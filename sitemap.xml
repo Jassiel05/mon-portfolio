@@ -3,12 +3,12 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://jassiel-portfolio.site/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://jassiel-portfolio.site/assets/jassiel-fidele-rakotoarinelina.png</image:loc>
-      <image:title>Jassiel Fidèle RAKOTOARINELINA — Expert IA &amp; Automatisation</image:title>
+      <image:loc>https://jassiel-portfolio.site/assets/jassiel-og.jpg</image:loc>
+      <image:title>Jassiel Fidèle RAKOTOARINELINA — Développeur (Vibe coder) &amp; Automatisation IA</image:title>
     </image:image>
   </url>
 </urlset>
